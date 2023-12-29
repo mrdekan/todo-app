@@ -1,0 +1,12 @@
+.todoList{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+.todoList h2{
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.todoList div:not(:last-child){
+    border-bottom: 1px solid var(--main-shadow-color);
+}
