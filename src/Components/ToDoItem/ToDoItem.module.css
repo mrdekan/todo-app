@@ -1,11 +1,17 @@
 .todo{
     display: flex;
-    align-items: center;
-    gap: 10px;
     height: 40px;
     padding: 7px;
     transition: box-shadow 0.18s;
     position: relative;
+    justify-content: space-between;
+    align-items: center;
+}
+.rightPart{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: none !important;
 }
 .todo:hover{
     box-shadow: 0 0 10px var(--main-shadow-color);

@@ -1,0 +1,30 @@
+.circle{
+    width: 6px;
+    height: 6px;
+    background: currentColor;
+    border-radius: 50%;
+}
+.optionsButton{
+    display: flex;
+    gap: 4px;
+    height: 30px;
+    width: 30px;
+    align-items: center;
+    cursor: pointer;
+    padding: 2px;
+    position: relative;
+}
+.optionsButton::before{
+    content: '';
+    position: absolute;
+    margin-left: -4px;
+    background: var(--main-shadow-color);
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.optionsButton:hover::before{
+    opacity: 0.2;
+}

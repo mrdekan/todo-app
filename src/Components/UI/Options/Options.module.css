@@ -1,0 +1,28 @@
+.container{
+    background: var(--main-bg-color);
+    box-shadow: 0 0 10px var(--main-shadow-color);
+    border-radius: 10px;
+    min-width: 40px;
+    min-height: 20px;
+    position: absolute;
+    display: none;
+    transform: translate(0,50%);
+    padding: 10px;
+    z-index: 20;
+}
+.container p{
+    font-size: 20px;
+    font-family: Calibri, 'serif';
+    color: var(--main-text-color);
+    line-height: 26px;
+    height: 26px;
+}
+.container p:not(:last-child){
+    border-bottom: 1px solid var(--main-shadow-color);
+}
+.container.active{
+    display: block;
+}
+.container.left{
+    transform: translate(-100%,50%);
+}
