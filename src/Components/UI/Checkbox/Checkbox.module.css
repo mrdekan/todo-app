@@ -12,6 +12,7 @@ input[type="checkbox"] {
     border-radius: 5px;
     display: grid;
     place-content: center;
+    cursor: pointer;
 }
 
 input[type="checkbox"]::before {

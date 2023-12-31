@@ -1,6 +1,6 @@
 .circle{
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     background: currentColor;
     border-radius: 50%;
 }
@@ -13,6 +13,7 @@
     cursor: pointer;
     padding: 2px;
     position: relative;
+    border: none !important;
 }
 .optionsButton::before{
     content: '';
@@ -27,4 +28,8 @@
 }
 .optionsButton:hover::before{
     opacity: 0.2;
+}
+.container{
+    position: relative;
+
 }

@@ -26,14 +26,13 @@ const Options = ({isOpen, setIsOpen, options}) => {
             document.removeEventListener('click', handleOutsideClick,true);
         };
     }, []);
-    const classes = [cl.container];
+    let classes = [cl.container, cl.left];
+    if(!isLeft) classes = [cl.container];
     if(isOpen) classes.push(cl.active);
-    if(isLeft) classes.push(cl.left);
-    function handler(func){
+
+    function handler(e,func){
+        e.stopPropagation();
         setIsOpen(false);
-        if(classes.includes(cl.active))
-        classes.splice(classes.indexOf(cl.active),1);
-        console.log(classes)
         func();
     }
 
@@ -42,7 +41,7 @@ const Options = ({isOpen, setIsOpen, options}) => {
     return (
         <div ref={dropdownRef} className={classes.join(' ')}>
             {options.map(el =>
-            <p key={el.name} onClick={() => handler(el.func)}>{el.name}</p>
+            <p key={el.name} onClick={(e) => handler(e,el.func)}>{el.name}</p>
             )}
         </div>
     );

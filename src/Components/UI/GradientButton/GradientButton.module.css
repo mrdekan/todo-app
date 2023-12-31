@@ -1,0 +1,31 @@
+.btnHover {
+    font-size: 26px;
+    font-weight: 600;
+    color: #fff;
+    width: calc(100% - 20px);
+    cursor: pointer;
+    margin: 10px;
+    height: 44px;
+    line-height: 50px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 10px;
+    transition: all .4s ease-in-out;
+    background-image: linear-gradient(to right, var(--main-accent-color), #e02c4d, #da2960,var(--main-accent-color));
+    box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnHover:hover {
+    background-position: 100% 0;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btnHover:focus {
+    outline: none;
+}
