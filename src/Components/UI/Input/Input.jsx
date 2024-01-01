@@ -1,8 +1,8 @@
 import React from 'react';
-import './Input.module.css';
+import cl from './Input.module.css';
 const Input = (props) => {
     return (
-        <input type="text" {...props}/>
+        <input className={cl.input} type="text" {...props}/>
     );
 };
 

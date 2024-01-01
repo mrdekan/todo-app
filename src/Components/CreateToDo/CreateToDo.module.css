@@ -1,0 +1,25 @@
+.container{
+    display: flex;
+    height: 40px;
+    padding: 7px;
+    transition: box-shadow 0.18s;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+.leftPart{
+    opacity: 0;
+    transition: opacity .2s;
+    border: none !important;
+    width: 25px;
+}
+.leftPart button{
+    display: none;
+}
+.leftPart.active{
+    opacity: 1;
+}
+.leftPart.active button{
+    display: flex;
+}

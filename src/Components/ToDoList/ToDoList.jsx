@@ -1,6 +1,7 @@
 import React from 'react';
 import ToDoItem from "../ToDoItem/ToDoItem";
 import cl from "./ToDoList.module.css";
+import CreateToDo from "../CreateToDo/CreateToDo.jsx";
 const ToDoList = ({model}) => {
     return (
         <div className={cl.todoList}>
@@ -13,6 +14,7 @@ const ToDoList = ({model}) => {
                         {model.items.map((item, index) => (
                             <ToDoItem key={index} text={item.text} checked={item.checked} deleteAfterMarking={model.deleteAfterMarking} />
                         ))}
+                        <CreateToDo list={model.items}/>
                     </div>
                 ) :
                 <h2>Select list</h2>

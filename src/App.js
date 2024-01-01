@@ -1,9 +1,8 @@
+import React, {useState} from "react";
 import './App.css';
-import ToDoList from "./Components/ToDoList/ToDoList";
-import ListOfToDoLists from "./Components/ListOfToDoLists/ListOfToDoLists";
-import {useState} from "react";
-import toDoList from "./Components/ToDoList/ToDoList";
-import Storage from "./Utils/Storage";
+import ToDoList from "./Components/ToDoList/ToDoList.jsx";
+import ListOfToDoLists from "./Components/ListOfToDoLists/ListOfToDoLists.jsx";
+import Storage from "./Utils/Storage.js";
 
 function App() {
   const [lists,setLists] = useState(Storage.getListsNames());
