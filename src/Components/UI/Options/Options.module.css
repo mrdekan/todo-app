@@ -7,7 +7,7 @@
     position: absolute;
     display: none;
     transform: translate(34px,0);
-    padding: 10px;
+    padding: 10px 0;
     z-index: 20;
 }
 .container p{
@@ -16,6 +16,13 @@
     color: var(--main-text-color);
     line-height: 26px;
     height: 26px;
+    cursor: pointer;
+    user-select: none;
+    padding: 0 10px;
+    transition: color 0.2s;
+}
+.container p:hover{
+    color: var(--main-accent-color);
 }
 .container p:not(:last-child){
     border-bottom: 1px solid var(--main-shadow-color);

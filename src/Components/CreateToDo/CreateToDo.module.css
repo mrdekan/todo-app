@@ -10,7 +10,7 @@
 }
 .leftPart{
     opacity: 0;
-    transition: opacity .2s;
+    transition: opacity .3s;
     border: none !important;
     width: 25px;
 }
@@ -22,4 +22,5 @@
 }
 .leftPart.active button{
     display: flex;
+    transition: 1s;
 }

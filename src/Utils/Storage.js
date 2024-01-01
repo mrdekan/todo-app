@@ -22,4 +22,19 @@ export default class Storage{
     static deleteToDoList(listId){
         localStorage.removeItem(listId);
     }
+    static addToDo(listId, todo){
+        const list = this.getToDoList(listId);
+        list.items.push(todo);
+        this.setToDoList(list);
+    }
+    static setToDoState(listId, index, state){
+        const list = this.getToDoList(listId);
+        list.items[index].state = state;
+        this.setToDoList(list);
+    }
+    static setToDoText(listId, index, text){
+        const list = this.getToDoList(listId);
+        list.items[index].value = text;
+        this.setToDoList(list);
+    }
 }
