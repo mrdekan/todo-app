@@ -37,4 +37,9 @@ export default class Storage{
         list.items[index].value = text;
         this.setToDoList(list);
     }
+    static deleteToDo(listId, index){
+        const list = this.getToDoList(listId);
+        list.items.splice(index,1);
+        this.setToDoList(list);
+    }
 }

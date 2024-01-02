@@ -6,7 +6,7 @@ import ToDoInput from "../UI/Input/ToDoInput.jsx";
 import SmallGradientButton from "../UI/GradientButton/SmallGradientButton.jsx";
 import Storage from "../../Utils/Storage.js";
 
-const ToDoItem = ({text, deleteAfterMarking, state, callbackState, callbackText, index}) => {
+const ToDoItem = ({text, deleteAfterMarking, state, callbackState, callbackText,callbackDelete, index}) => {
     const [value, setValue] = useState(state === 1);
     const [content, setContent] = useState(text);
     const [isEditing, setIsEditing] = useState(false);
@@ -25,7 +25,7 @@ const ToDoItem = ({text, deleteAfterMarking, state, callbackState, callbackText,
         document.removeEventListener('click', handleOutsideClick,true);
     }
     function remove() {
-        alert('deleting');
+        callbackDelete(index);
     }
 
     const options = [
