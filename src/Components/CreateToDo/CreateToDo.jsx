@@ -11,13 +11,15 @@ const CreateToDo = ({list, callback}) => {
     const buttonClasses = [cl.leftPart];
     if (value) buttonClasses.push(cl.active);
     const callbackHandler = () => {
-        console.log("test")
         callback(
             {
                 value: value,
                 state: 0
             });
     }
+    const handleEnterKeyPress = (e) => {
+        if (e.key === 'Enter' && value) callbackHandler();
+    };
     return (
         <div className={cl.container}>
             <div className={buttonClasses.join(' ')}>
@@ -28,7 +30,7 @@ const CreateToDo = ({list, callback}) => {
                     </svg>
                 </SmallGradientButton>
             </div>
-            <ToDoInput value={value} onChange={e => setValue(e.target.value)} placeholder="Enter your task..."/>
+            <ToDoInput value={value} onChange={e => setValue(e.target.value)} onKeyDown={handleEnterKeyPress} placeholder="Enter your task..."/>
         </div>
     );
 };
