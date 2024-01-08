@@ -31,5 +31,5 @@
     display: block;
 }
 .container.left{
-    transform: translate(-100%,0);
+    transform: translate(calc(17px - 100%),-17px);
 }

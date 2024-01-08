@@ -11,6 +11,7 @@ const ToDoItem = ({text, deleteAfterMarking, state, callbackState, callbackText,
     const [content, setContent] = useState(text);
     const [isEditing, setIsEditing] = useState(false);
     const ref = useRef(null);
+    const [classes, setClasses] = useState([cl.todo]);
     const handleOutsideClick = (event) => {
         if (ref.current && !ref.current.contains(event.target)) {
             stopEdit();
@@ -25,7 +26,8 @@ const ToDoItem = ({text, deleteAfterMarking, state, callbackState, callbackText,
         document.removeEventListener('click', handleOutsideClick,true);
     }
     function remove() {
-        callbackDelete(index);
+        setClasses([...classes,cl.deleted]);
+        window.setTimeout(()=>callbackDelete(index),200);
     }
 
     const options = [
@@ -43,6 +45,7 @@ const ToDoItem = ({text, deleteAfterMarking, state, callbackState, callbackText,
     const checkboxHandler = (val) => {
         setValue(val);
         callbackState(index, val ? 1 : 0);
+        if(deleteAfterMarking && val!==0) window.setTimeout(()=>remove(),400);
     }
     const saveText = ()=>{
         callbackText(index,content);
@@ -50,7 +53,7 @@ const ToDoItem = ({text, deleteAfterMarking, state, callbackState, callbackText,
         stopEdit();
     }
     return (
-        <div className={cl.todo} ref={ref}>
+        <div className={classes.join(' ')} ref={ref}>
             <div className={cl.rightPart}>
                 {deleteAfterMarking && <div className={lineClass.join(' ')}></div>}
                 {isEditing

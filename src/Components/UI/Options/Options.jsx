@@ -5,7 +5,7 @@ const Options = ({isOpen, setIsOpen, options}) => {
     const [isLeft, setIsLeft] = useState(false);
 
     useEffect(() => {
-        const element = dropdownRef.current;
+        /*const element = dropdownRef.current;
         const originalDisplayStyle = element.style.display;
         element.style.display = 'block';
         element.style.visibility = 'hidden';
@@ -13,7 +13,7 @@ const Options = ({isOpen, setIsOpen, options}) => {
         element.style.display = originalDisplayStyle;
         element.style.visibility = 'visible';
         //if(rect.x+20+rect.width>=window.innerWidth) classes.push(cl.left);
-        setIsLeft(rect.x+40+rect.width>=window.innerWidth);
+        setIsLeft(rect.x+40+rect.width>=window.innerWidth);*/
         const handleOutsideClick = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
                 setIsOpen(false);
@@ -27,7 +27,7 @@ const Options = ({isOpen, setIsOpen, options}) => {
         };
     }, []);
     let classes = [cl.container, cl.left];
-    if(!isLeft) classes = [cl.container];
+    //if(!isLeft) classes = [cl.container];
     if(isOpen) classes.push(cl.active);
 
     function handler(e,func){

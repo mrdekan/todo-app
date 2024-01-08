@@ -4,6 +4,7 @@ import cl from "./ToDoList.module.css";
 import CreateToDo from "../CreateToDo/CreateToDo.jsx";
 import Storage from "../../Utils/Storage.js";
 import { v4 as uuidv4 } from 'uuid';
+import {CSSTransition, TransitionGroup} from "react-transition-group";
 const ToDoList = ({list,setList,update}) => {
     const addToDo = (todo) =>{
         Storage.addToDo(list.id, todo);
@@ -26,7 +27,8 @@ const ToDoList = ({list,setList,update}) => {
                     <div>
                         <h2>{list.name}</h2>
                         {list.items.map((item, index) => (
-                            <ToDoItem key={uuidv4()} text={item.value} index={index} callbackState={setToDoState} callbackText={setToDoText} callbackDelete={deleteToDo} state={item.state} deleteAfterMarking={list.deleteAfterMarking} />
+                                <ToDoItem key={uuidv4()} text={item.value} index={index} callbackState={setToDoState} callbackText={setToDoText} callbackDelete={deleteToDo} state={item.state} deleteAfterMarking={list.deleteAfterMarking} />
+
                         ))}
                         <CreateToDo list={list.items} callback={addToDo}/>
                     </div>

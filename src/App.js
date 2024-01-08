@@ -16,9 +16,6 @@ function App() {
       setLists(lists);
       Storage.setListsNames(lists);
   }
-  /*const updateToDo = ()=>{
-      setList(Storage.getToDoList(selectedList.id));
-  }*/
   return (
     <div className="App">
         <ListOfToDoLists selectedList={selectedList} setSelectedList={setSelectedList} lists={lists} setLists={updateLists}/>

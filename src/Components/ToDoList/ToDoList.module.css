@@ -5,6 +5,7 @@
     width: 100%;
     height: 100vh;
     border-left: 1px solid var(--main-shadow-color);
+    overflow: hidden;
 }
 .todoList h2{
     font-size: 24px;
@@ -13,3 +14,4 @@
 .todoList div:not(:last-child){
     border-bottom: 1px solid var(--main-shadow-color);
 }
+
