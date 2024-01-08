@@ -5,7 +5,7 @@
     transition: box-shadow 0.18s, transform 0.2s, opacity 0.2s;
     position: relative;
     justify-content: space-between;
-    align-items: center;
+    /*align-items: center;*/
 }
 .rightPart{
     display: flex;
@@ -14,7 +14,7 @@
     border: none !important;
 }
 .todo:hover{
-    //box-shadow: 0 0 10px var(--main-shadow-color);
+    /*box-shadow: 0 0 10px var(--main-shadow-color);*/
 }
 .todo p{
     font-size: 20px;
@@ -25,7 +25,8 @@
     z-index: 20;
     height: 3px;
     width: 0;
-    background: var(--main-shadow-color);
+    background: var(--main-accent-color);
+    border: none !important;
     opacity: 0;
     left: 0;
 }

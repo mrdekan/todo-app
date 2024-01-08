@@ -5,6 +5,8 @@ import OptionsBtn from "../UI/OptionsBtn/OptionsBtn";
 import ToDoInput from "../UI/Input/ToDoInput.jsx";
 import SmallGradientButton from "../UI/GradientButton/SmallGradientButton.jsx";
 import Storage from "../../Utils/Storage.js";
+import useSound from "use-sound";
+import penSound from './penSound.mp3';
 
 const ToDoItem = ({text, deleteAfterMarking, state, callbackState, callbackText,callbackDelete, index}) => {
     const [value, setValue] = useState(state === 1);
@@ -12,6 +14,7 @@ const ToDoItem = ({text, deleteAfterMarking, state, callbackState, callbackText,
     const [isEditing, setIsEditing] = useState(false);
     const ref = useRef(null);
     const [classes, setClasses] = useState([cl.todo]);
+    const [play] = useSound(penSound);
     const handleOutsideClick = (event) => {
         if (ref.current && !ref.current.contains(event.target)) {
             stopEdit();
@@ -45,7 +48,10 @@ const ToDoItem = ({text, deleteAfterMarking, state, callbackState, callbackText,
     const checkboxHandler = (val) => {
         setValue(val);
         callbackState(index, val ? 1 : 0);
-        if(deleteAfterMarking && val!==0) window.setTimeout(()=>remove(),400);
+        if(deleteAfterMarking && val!==0){
+            play();
+            window.setTimeout(()=>remove(),400);
+        }
     }
     const saveText = ()=>{
         callbackText(index,content);
