@@ -8,7 +8,7 @@ input[type="radio"]{
     border-radius: 0 10px 10px 0;
     padding: 0 18px 0 10px !important;
 }
-label{
+.title label{
     display: block;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -20,14 +20,11 @@ label{
     line-height: 42px;
     font-weight: 500;
     user-select: none;
+    position: relative;
 }
 .title{
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 10px;
-
-}
-.title label{
-    position: relative;
 }
