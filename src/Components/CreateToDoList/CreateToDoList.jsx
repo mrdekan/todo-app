@@ -25,6 +25,8 @@ const CreateToDoList = ({callback}) => {
             id: uuidv4(),
             name: name,
             deleteAfterMarking: deleteAfterMarking,
+            type: selectedOption.value,
+            options: [],
             items: []
         };
         setName('');

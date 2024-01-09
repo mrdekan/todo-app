@@ -4,7 +4,7 @@
     border: 2px solid var(--main-text-color);
     background: var(--main-bg-color);
     border-radius: 5px;
-    transition: border .5s;
+    transition: border .3s;
     cursor: pointer;
     position: relative;
 }
@@ -29,7 +29,7 @@
 }
 .icon{
     transform: rotate(-90deg);
-    transition: transform .5s;
+    transition: transform .3s !important;
 }
 .select.active .icon{
     transform: rotate(-180deg);
@@ -42,7 +42,7 @@
     background: var(--main-bg-color);
     border: 2px solid var(--main-text-color);
     border-top: none !important;
-    transition: max-height 0.5s ease-in-out, border .5s;
+    transition: max-height 0.3s, border .3s !important;
     max-height: 3px;
     overflow: hidden;
     transform-origin: top;

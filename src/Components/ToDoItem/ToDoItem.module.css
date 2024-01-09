@@ -5,20 +5,25 @@
     transition: box-shadow 0.18s, transform 0.2s, opacity 0.2s;
     position: relative;
     justify-content: space-between;
-    /*align-items: center;*/
+    align-items: center;
 }
 .rightPart{
     display: flex;
     align-items: center;
     gap: 10px;
     border: none !important;
+    width: calc(100% - 34px);
 }
 .todo:hover{
     /*box-shadow: 0 0 10px var(--main-shadow-color);*/
 }
-.todo p{
+.todo .textContent{
     font-size: 20px;
     font-family: Calibri, serif;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: calc(100% - 35px);
 }
 .line{
     position: absolute;

@@ -1,10 +1,9 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useRef, useState} from 'react';
 import Checkbox from "../UI/Checkbox/Checkbox";
 import cl from "./ToDoItem.module.css";
 import OptionsBtn from "../UI/OptionsBtn/OptionsBtn";
 import ToDoInput from "../UI/Input/ToDoInput.jsx";
 import SmallGradientButton from "../UI/GradientButton/SmallGradientButton.jsx";
-import Storage from "../../Utils/Storage.js";
 import useSound from "use-sound";
 import penSound from './penSound.mp3';
 
@@ -75,7 +74,7 @@ const ToDoItem = ({text, deleteAfterMarking, state, callbackState, callbackText,
                     :
                     <>
                         <Checkbox value={value} setValue={checkboxHandler}/>
-                        <p>{content}</p>
+                        <p className={cl.textContent}>{content}</p>
                     </>
                 }
             </div>
