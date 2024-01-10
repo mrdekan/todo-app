@@ -1,7 +1,7 @@
 .sideBar{
     display: flex;
     flex-direction: column;
-    width: clamp(100px, 25%, 300px);
+    width: clamp(100px, 30%, 350px);
     position: relative;
 }
 

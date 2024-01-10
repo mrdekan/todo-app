@@ -6,9 +6,16 @@ import Storage from "../../Utils/Storage.js";
 import { v4 as uuidv4 } from 'uuid';
 const ToDoList = ({list,setList,update}) => {
     const counter = useRef(null);
-    const addToDo = (todo) =>{
+    const addToDo = (newTodo) =>{
+        const todo = {
+            value: newTodo,
+            state: 0
+        }
         Storage.addToDo(list.id, todo);
         setList(Storage.getToDoList(list.id));
+    }
+    const validate = (todo) => {
+        return {isValid: true, message: ''};
     }
     const setToDoState = (index, state) => {
         Storage.setToDoState(list.id,index,state);
@@ -38,7 +45,7 @@ const ToDoList = ({list,setList,update}) => {
                         {list.items.map((item, index) => (
                             <ToDoItem key={uuidv4()} text={item.value} index={index} callbackState={setToDoState} callbackText={setToDoText} callbackDelete={deleteToDo} state={item.state} deleteAfterMarking={list.deleteAfterMarking} />
                         ))}
-                        <CreateToDo list={list.items} callback={addToDo}/>
+                        <CreateToDo list={list.items} callback={addToDo} validation={validate}/>
                     </div>
                 ) :
                 <h2>Select a list</h2>

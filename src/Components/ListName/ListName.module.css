@@ -21,6 +21,7 @@ input[type="radio"]{
     font-weight: 500;
     user-select: none;
     position: relative;
+    padding: 0 !important;
 }
 .title{
     display: flex;

@@ -24,3 +24,10 @@
     display: flex;
     transition: 1s;
 }
+.reverse{
+    flex-direction: row-reverse;
+    padding: 0;
+}
+.reverse input[type="text"]{
+    padding: 0;
+}

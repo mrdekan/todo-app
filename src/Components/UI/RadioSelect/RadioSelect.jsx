@@ -6,7 +6,7 @@ const RadioSelect = ({options, selectedOption, setSelectedOption}) => {
             {
                 options.map(el =>
                     <div className={cl.option} key={el.name}>
-                        <input type="radio" name="radioSelect" id={el.value} value={el.value} defaultChecked={el.name===selectedOption.name}/>
+                        <input type="radio" name="radioSelect" id={el.value} value={el.value} defaultChecked={el.name===selectedOption.name} onChange={()=>setSelectedOption(el)}/>
                         <label htmlFor={el.value}>{el.name}</label>
                     </div>
                 )

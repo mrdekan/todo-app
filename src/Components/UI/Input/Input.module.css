@@ -6,6 +6,8 @@
     width: 100%;
     padding: 3px 0 3px 5px;
     transition: border .3s;
+    background: var(--main-bg-color);
+    color: var(--main-text-color);
 }
 .input:focus{
     border: 2px solid var(--main-accent-color);

@@ -1,0 +1,34 @@
+.container li{
+    font-size: 20px;
+    height: 24px;
+}
+.container{
+    border: 2px solid var(--main-text-color);
+    transition: border .3s;
+    padding: 5px;
+    border-radius: 5px;
+}
+.container:hover{
+    border: 2px solid var(--main-accent-color);
+}
+.containerOptions{
+    max-height: 120px;
+    overflow: auto;
+}
+p{
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+.containerOptions::-webkit-scrollbar,
+.containerOptions::-webkit-scrollbar-thumb {
+    width: 8px;
+    border-radius: 13px;
+    background-clip: padding-box;
+    border: none;
+
+}
+.containerOptions::-webkit-scrollbar-thumb {
+    /*box-shadow: inset 0 0 0 10px var(--main-accent-color);*/
+    background: var(--main-accent-color);
+}
