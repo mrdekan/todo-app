@@ -24,18 +24,25 @@ const CreateToDoList = ({callback}) => {
     const [selectedOption,setSelectedOption] = useState(types[0]);
     const callbackHandler = (e) => {
         e.preventDefault();
+        let opt = [];
+        for(let i = 0; i < options.length; i++){
+            opt.push({
+                name: options[i],
+                value: i
+            })
+        }
         const res = {
             id: uuidv4(),
             name: name,
             deleteAfterMarking: deleteAfterMarking,
             type: selectedOption.value,
-            options: [],
+            options: opt,
             items: []
         };
         setName('');
-        setSelectedOption(types[0]);
         setDeleteAfterMarking(false);
         setSelectedOption(types[0]);
+        setOptions([]);
         callback(res);
     }
     return (

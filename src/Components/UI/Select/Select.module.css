@@ -26,6 +26,10 @@
     height: 23px;
     justify-content: space-between;
     user-select: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    border: none !important;
 }
 .icon{
     transform: rotate(-90deg);
@@ -36,6 +40,7 @@
 }
 .dropdown{
     position: absolute;
+    z-index: 119;
     width: calc(100% + 4px);
     margin-left: -2px;
     border-radius: 0 0 5px 5px;
@@ -50,6 +55,7 @@
 }
 .select.active .dropdown{
     max-height: 200px;
+    z-index: 120;
 }
 .dropdown li{
     padding: 3px 5px;

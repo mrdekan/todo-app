@@ -24,6 +24,8 @@
     white-space: nowrap;
     overflow: hidden;
     width: calc(100% - 35px);
+    height: 22px;
+    line-height: 22px;
 }
 .line{
     position: absolute;
@@ -43,4 +45,8 @@
 .deleted{
     transform: translateX(100%);
     opacity: 0;
+}
+.selectContainer{
+    width: 15%;
+    border: none !important;
 }

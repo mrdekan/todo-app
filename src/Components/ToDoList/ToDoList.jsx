@@ -19,7 +19,7 @@ const ToDoList = ({list,setList,update}) => {
     }
     const setToDoState = (index, state) => {
         Storage.setToDoState(list.id,index,state);
-        if(counter.current && !list.deleteAfterMarking)
+        if(counter.current && !list.deleteAfterMarking && list.type === 0)
         counter.current.innerHTML = `${list.name} (${Storage.getToDoList(list.id).items.filter(el => el.state !== 0).length}/${list.items.length})`;
     }
 
@@ -35,7 +35,7 @@ const ToDoList = ({list,setList,update}) => {
             {list ?
                 (
                     <div>
-                        {list.deleteAfterMarking
+                        {list.deleteAfterMarking || list.type === 1
                             ?
                             <h2 key={list.id} ref={counter}>{list.name}</h2>
                             :
@@ -43,7 +43,7 @@ const ToDoList = ({list,setList,update}) => {
                         }
 
                         {list.items.map((item, index) => (
-                            <ToDoItem key={uuidv4()} text={item.value} index={index} callbackState={setToDoState} callbackText={setToDoText} callbackDelete={deleteToDo} state={item.state} deleteAfterMarking={list.deleteAfterMarking} />
+                            <ToDoItem key={uuidv4()} text={item.value} index={index} callbackState={setToDoState} callbackText={setToDoText} callbackDelete={deleteToDo} state={item.state} deleteAfterMarking={list.deleteAfterMarking} checkbox={list.type === 0} options={list.options}/>
                         ))}
                         <CreateToDo list={list.items} callback={addToDo} validation={validate}/>
                     </div>

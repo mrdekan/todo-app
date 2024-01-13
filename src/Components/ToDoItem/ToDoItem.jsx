@@ -1,4 +1,4 @@
-import React, { useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Checkbox from "../UI/Checkbox/Checkbox";
 import cl from "./ToDoItem.module.css";
 import OptionsBtn from "../UI/OptionsBtn/OptionsBtn";
@@ -6,18 +6,19 @@ import ToDoInput from "../UI/Input/ToDoInput.jsx";
 import SmallGradientButton from "../UI/GradientButton/SmallGradientButton.jsx";
 import useSound from "use-sound";
 import penSound from './penSound.mp3';
+import Select from "../UI/Select/Select.jsx";
 
-const ToDoItem = ({text, deleteAfterMarking, state, callbackState, callbackText,callbackDelete, index}) => {
+const ToDoItem = ({text, deleteAfterMarking, state, callbackState, callbackText,callbackDelete, index, checkbox, options}) => {
     const [value, setValue] = useState(state === 1);
+    const [currState, setCurrState] = useState(state);
     const [content, setContent] = useState(text);
     const [isEditing, setIsEditing] = useState(false);
     const ref = useRef(null);
     const [classes, setClasses] = useState([cl.todo]);
     const [play] = useSound(penSound);
     const handleOutsideClick = (event) => {
-        if (ref.current && !ref.current.contains(event.target)) {
+        if (ref.current && !ref.current.contains(event.target))
             stopEdit();
-        }
     };
     function edit() {
         setIsEditing(true);
@@ -32,7 +33,7 @@ const ToDoItem = ({text, deleteAfterMarking, state, callbackState, callbackText,
         window.setTimeout(()=>callbackDelete(index),200);
     }
 
-    const options = [
+    const optionsContext = [
         {
             name: 'Edit',
             func: edit
@@ -43,10 +44,14 @@ const ToDoItem = ({text, deleteAfterMarking, state, callbackState, callbackText,
         }
     ]
     const lineClass = [cl.line];
-    if (value) lineClass.push(cl.active);
+    console.log(value)
+    if (value && checkbox || options && options[options.length-1] && currState === options[options.length-1].value) lineClass.push(cl.active);
+    if(deleteAfterMarking)
+        options = options.filter(el => el.value >= currState);
     const checkboxHandler = (val) => {
         setValue(val);
         callbackState(index, val ? 1 : 0);
+        setCurrState(value);
         if(deleteAfterMarking && val!==0){
             play();
             window.setTimeout(()=>remove(),400);
@@ -54,8 +59,15 @@ const ToDoItem = ({text, deleteAfterMarking, state, callbackState, callbackText,
     }
     const saveText = ()=>{
         callbackText(index,content);
-        console.log('save')
         stopEdit();
+    }
+    const selectHandler = (value) => {
+        callbackState(index, value);
+        setCurrState(value);
+        if(deleteAfterMarking && value === options[options.length-1].value){
+            play();
+            window.setTimeout(()=>remove(),400);
+        }
     }
     return (
         <div className={classes.join(' ')} ref={ref}>
@@ -73,12 +85,15 @@ const ToDoItem = ({text, deleteAfterMarking, state, callbackState, callbackText,
                     </>
                     :
                     <>
-                        <Checkbox value={value} setValue={checkboxHandler}/>
+                    {checkbox
+                        ?<Checkbox value={value} setValue={checkboxHandler}/>
+                        :<div className={cl.selectContainer}><Select options={options} selectedOption={currState} setSelectedOption={selectHandler}/></div>
+                    }
                         <p className={cl.textContent}>{content}</p>
                     </>
                 }
             </div>
-            <OptionsBtn options={options}/>
+            <OptionsBtn options={optionsContext}/>
         </div>
     )
         ;
