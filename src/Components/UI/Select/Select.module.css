@@ -33,7 +33,7 @@
 }
 .icon{
     transform: rotate(-90deg);
-    transition: transform .3s !important;
+    transition: transform .2s !important;
 }
 .select.active .icon{
     transform: rotate(-180deg);
@@ -47,11 +47,22 @@
     background: var(--main-bg-color);
     border: 2px solid var(--main-text-color);
     border-top: none !important;
-    transition: max-height 0.3s, border .3s !important;
+    transition: max-height .2s linear, border .3s !important;
     max-height: 3px;
     overflow: hidden;
     transform-origin: top;
     padding-top: 3px;
+}
+@keyframes dropdownClose {
+    from {
+        z-index: 120;
+    }
+    to {
+        z-index: 120;
+    }
+}
+.select:not(.active) .dropdown {
+    animation: dropdownClose .3s ease-in-out;
 }
 .select.active .dropdown{
     max-height: 200px;

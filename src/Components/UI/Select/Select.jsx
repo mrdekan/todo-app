@@ -1,14 +1,26 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import cl from './Select.module.css';
 const Select = ({options, selectedOption, setSelectedOption}) => {
 
     const [isOpen,setIsOpen] = useState(false);
+    const ref = useRef(null);
+    useEffect(() => {
+        const handleOutsideClick = (event) => {
+            if (ref.current && !ref.current.contains(event.target))
+                setIsOpen(false);
+        };
+
+        document.addEventListener('click', handleOutsideClick,true);
+
+        return () => {
+            document.removeEventListener('click', handleOutsideClick,true);
+        };
+    }, []);
 
     const classes = [cl.select];
     if(isOpen) classes.push(cl.active);
-    console.log(selectedOption)
     return (
-        <div className={classes.join(' ')} onClick={()=>setIsOpen(!isOpen)}>
+        <div ref={ref} className={classes.join(' ')} onClick={()=>setIsOpen(!isOpen)}>
             <div className={cl.title}>
                 <p>{options.find(el=>el.value===selectedOption).name}</p>
                 <svg className={cl.icon} xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="currentColor">
