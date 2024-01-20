@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import Checkbox from "../UI/Checkbox/Checkbox";
 import cl from "./ToDoItem.module.css";
 import OptionsBtn from "../UI/OptionsBtn/OptionsBtn";
@@ -44,8 +44,7 @@ const ToDoItem = ({text, deleteAfterMarking, state, callbackState, callbackText,
         }
     ]
     const lineClass = [cl.line];
-    console.log(value)
-    if (value && checkbox || options && options[options.length-1] && currState === options[options.length-1].value) lineClass.push(cl.active);
+    if ((value && checkbox) || (options && options[options.length-1] && currState === options[options.length-1].value)) lineClass.push(cl.active);
     if(deleteAfterMarking)
         options = options.filter(el => el.value >= currState);
     const checkboxHandler = (val) => {

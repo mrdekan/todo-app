@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import cl from './ListOfToDoLists.module.css';
 import ListName from "../ListName/ListName";
 import GradientButton from "../UI/GradientButton/GradientButton";
@@ -35,9 +35,9 @@ const ListOfToDoLists = ({lists, selectedList, setSelectedList, setLists, openSe
                         <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/>
                     </svg>
                 </GradientButton>
-                <Modal visible={modal} setVisible={setModal}>
+                {modal && <Modal visible={modal} setVisible={setModal}>
                     <CreateToDoList callback={create}/>
-                </Modal>
+                </Modal>}
             </div>
             <div>
                 <IconButton callback={openSettings}>

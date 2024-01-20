@@ -4,7 +4,6 @@ import  cl from './CreateOptions.module.css';
 const CreateOptions = ({options,setOptions}) => {
     console.log(options)
     const addAnOption = (option) =>{
-        console.log('adding')
         setOptions([...options,option]);
     }
     const validate = (option) => {

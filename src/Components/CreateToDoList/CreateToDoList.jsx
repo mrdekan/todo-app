@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {memo, useState} from 'react';
 import Checkbox from "../UI/Checkbox/Checkbox";
 import cl from './CreateToDoList.module.css';
 import GradientButton from "../UI/GradientButton/GradientButton";
