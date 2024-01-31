@@ -8,6 +8,8 @@
     align-items: center;
 }
 .iconButton svg{
+    color: var(--main-text-color);
+    transition: color .3s;
     width: 52px !important;
     height: 52px !important;
 }

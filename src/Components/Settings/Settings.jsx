@@ -1,25 +1,15 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import cl from './Settings.module.css';
 import RadioSelect from "../UI/RadioSelect/RadioSelect.jsx";
-const Settings = () => {
-    const themes = [
-        {
-            name: 'Light',
-            value: 0
-        },
-        {
-            name: 'Dark',
-            value: 1
-        }
-    ];
-    const [selectedTheme,setSelectedTheme] = useState(themes[0]);
-    const selectTheme = (theme) => {
-        setSelectedTheme(theme);
-        console.log(theme);
-    }
+import Theme from "../../Utils/Theme.js";
+const Settings = ({selectedTheme,setSelectedTheme}) => {
+    const themes = Theme.themes;
+    //const [selectedTheme,setSelectedTheme] = useState(Theme.getSelectedTheme());
+
     return (
-        <div>
-            <RadioSelect options={themes} setSelectedOption={selectTheme} selectedOption={selectedTheme}></RadioSelect>
+        <div className={cl.container}>
+            <label>Theme</label>
+            <RadioSelect options={themes} setSelectedOption={setSelectedTheme} selectedOption={selectedTheme}></RadioSelect>
         </div>
     );
 };

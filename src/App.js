@@ -5,8 +5,16 @@ import ListOfToDoLists from "./Components/ListOfToDoLists/ListOfToDoLists.jsx";
 import Storage from "./Utils/Storage.js";
 import Modal from "./Components/UI/Modal/Modal.jsx";
 import Settings from "./Components/Settings/Settings.jsx";
+import Theme from "./Utils/Theme.js";
 
 function App() {
+    const [selectedTheme,setSelectedTheme] = useState(Theme.getSelectedTheme());
+    useEffect(() => {
+        if(selectedTheme.name === 'Light')
+            Theme.setLight();
+        else
+            Theme.setDark();
+    }, [selectedTheme]);
     const [lists, setLists] = useState(Storage.getListsNames());
     const [selectedList, setSelectedList] = useState(lists && lists.length > 0 ? lists[0] : {});
     const [list, setList] = useState(Storage.getToDoList(selectedList.id));
@@ -46,7 +54,7 @@ function App() {
             <ListOfToDoLists selectedList={selectedList} setSelectedList={setSelectedList} lists={lists}
                              setLists={updateLists} openSettings={openSettings}/>
             <ToDoList list={list} setList={setList}/>
-            {settingsIsOpen && <Modal visible={settingsIsOpen} setVisible={setSettingsIsOpen}><Settings/></Modal>}
+            {settingsIsOpen && <Modal visible={settingsIsOpen} setVisible={setSettingsIsOpen}><Settings selectedTheme={selectedTheme} setSelectedTheme={setSelectedTheme}/></Modal>}
         </div>
     );
 }
